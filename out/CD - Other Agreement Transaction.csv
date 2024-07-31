@@ -1,6 +1,0 @@
-Path,Change Type,Old Value,New Value
-Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][0]['xs:complexType -> xs:sequence -> xs:element,Type Changed,"[{'@name': 'CD_OT_TransactionTupe', '@msdata:Caption': 'Transaction Type', '@type': 'xs:string', '@minOccurs': '0'}, {'@name': 'CombinationID', '@type': 'xs:string', '@minOccurs': '0'}]","{
-  ""@name"": ""CombinationID"",
-  ""@type"": ""xs:string"",
-  ""@minOccurs"": ""0""
-}"
