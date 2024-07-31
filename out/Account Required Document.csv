@@ -1,0 +1,321 @@
+Path,Change Type,Old Value,New Value
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][0]['xs:complexType -> xs:sequence -> xs:element'][0,Type Changed,"{
+  ""@name"": ""RDQ_Product"",
+  ""@msdata:Caption"": ""Product"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][0]['xs:complexType -> xs:sequence -> xs:element'][1,Type Changed,"{
+  ""@name"": ""RDQ_ClientType"",
+  ""@msdata:Caption"": ""Client Type"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][0]['xs:complexType -> xs:sequence -> xs:element'][2,Type Changed,"{
+  ""@name"": ""CombinationID"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][0,Type Changed,"{
+  ""@name"": ""DecisionID"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][1,Type Changed,"{
+  ""@name"": ""CombinationID"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][2,Type Changed,"{
+  ""@name"": ""Key"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][3,Type Changed,"{
+  ""@name"": ""Question"",
+  ""@msdata:Caption"": ""Parameter"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][4,Type Changed,"{
+  ""@name"": ""Answer"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:complexType -> xs:choice -> xs:element'][1]['xs:complexType -> xs:sequence -> xs:element'][5,Type Changed,"{
+  ""@name"": ""AnswerValueID"",
+  ""@type"": ""xs:string"",
+  ""@minOccurs"": ""0""
+}",
+Combinations -> xs:schema -> xs:element -> xs:unique -> xs:selector,Type Changed,"{
+  ""@xpath"": "".//Combination""
+}",
+Combinations -> xs:schema -> xs:element -> xs:unique -> xs:field,Type Changed,"{
+  ""@xpath"": ""CombinationID""
+}",
+Combinations -> xs:schema -> xs:element -> xs:keyref -> xs:selector,Type Changed,"{
+  ""@xpath"": "".//Decision""
+}",
+Combinations -> xs:schema -> xs:element -> xs:keyref -> xs:field,Type Changed,"{
+  ""@xpath"": ""CombinationID""
+}",
+Combinations -> Combination'][0,Type Changed,"{
+  ""RDQ_Product"": ""52"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""1""
+}",
+Combinations -> Combination'][1,Type Changed,"{
+  ""RDQ_Product"": ""52"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""2""
+}",
+Combinations -> Combination'][2,Type Changed,"{
+  ""RDQ_Product"": ""53"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""3""
+}",
+Combinations -> Combination'][3,Type Changed,"{
+  ""RDQ_Product"": ""53"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""4""
+}",
+Combinations -> Combination'][4,Type Changed,"{
+  ""RDQ_Product"": ""54"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""5""
+}",
+Combinations -> Combination'][5,Type Changed,"{
+  ""RDQ_Product"": ""54"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""6""
+}",
+Combinations -> Combination'][6,Type Changed,"{
+  ""RDQ_Product"": ""56"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""7""
+}",
+Combinations -> Combination'][7,Type Changed,"{
+  ""RDQ_Product"": ""56"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""8""
+}",
+Combinations -> Combination'][8,Type Changed,"{
+  ""RDQ_Product"": ""57"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""9""
+}",
+Combinations -> Combination'][9,Type Changed,"{
+  ""RDQ_Product"": ""57"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""10""
+}",
+Combinations -> Combination'][10,Type Changed,"{
+  ""RDQ_Product"": ""51"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""11""
+}",
+Combinations -> Combination'][11,Type Changed,"{
+  ""RDQ_Product"": ""51"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""12""
+}",
+Combinations -> Combination'][12,Type Changed,"{
+  ""RDQ_Product"": ""55"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""13""
+}",
+Combinations -> Combination'][13,Type Changed,"{
+  ""RDQ_Product"": ""55"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""14""
+}",
+Combinations -> Combination'][14,Type Changed,"{
+  ""RDQ_Product"": ""102"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""15""
+}",
+Combinations -> Combination'][15,Type Changed,"{
+  ""RDQ_Product"": ""102"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""16""
+}",
+Combinations -> Combination'][16,Type Changed,"{
+  ""RDQ_Product"": ""115"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""17""
+}",
+Combinations -> Combination'][17,Type Changed,"{
+  ""RDQ_Product"": ""115"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""18""
+}",
+Combinations -> Combination'][18,Type Changed,"{
+  ""RDQ_Product"": ""116"",
+  ""RDQ_ClientType"": ""2"",
+  ""CombinationID"": ""19""
+}",
+Combinations -> Combination'][19,Type Changed,"{
+  ""RDQ_Product"": ""116"",
+  ""RDQ_ClientType"": ""1"",
+  ""CombinationID"": ""20""
+}",
+Combinations -> Decision'][0,Type Changed,"{
+  ""DecisionID"": ""1"",
+  ""CombinationID"": ""1"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 016 - Copie de RCS / NIF / Statistique; 017 - Photocopie certifiée du statut juridique; 018 - Lettre d'autorité des signataires; 030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#18#19#20#63#64""
+}",
+Combinations -> Decision'][1,Type Changed,"{
+  ""DecisionID"": ""2"",
+  ""CombinationID"": ""2"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][2,Type Changed,"{
+  ""DecisionID"": ""3"",
+  ""CombinationID"": ""3"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 016 - Copie de RCS / NIF / Statistique; 017 - Photocopie certifiée du statut juridique; 018 - Lettre d'autorité des signataires; 030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#18#19#20#63#64""
+}",
+Combinations -> Decision'][3,Type Changed,"{
+  ""DecisionID"": ""4"",
+  ""CombinationID"": ""4"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][4,Type Changed,"{
+  ""DecisionID"": ""5"",
+  ""CombinationID"": ""5"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][5,Type Changed,"{
+  ""DecisionID"": ""6"",
+  ""CombinationID"": ""6"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 021 - Copie du certificat de naissance de l'enfant; 022 - Photo de l'enfant; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#23#24#62#64""
+}",
+Combinations -> Decision'][6,Type Changed,"{
+  ""DecisionID"": ""7"",
+  ""CombinationID"": ""7"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][7,Type Changed,"{
+  ""DecisionID"": ""8"",
+  ""CombinationID"": ""8"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""62#64""
+}",
+Combinations -> Decision'][8,Type Changed,"{
+  ""DecisionID"": ""9"",
+  ""CombinationID"": ""9"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][9,Type Changed,"{
+  ""DecisionID"": ""10"",
+  ""CombinationID"": ""10"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""62#64""
+}",
+Combinations -> Decision'][10,Type Changed,"{
+  ""DecisionID"": ""11"",
+  ""CombinationID"": ""11"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][11,Type Changed,"{
+  ""DecisionID"": ""12"",
+  ""CombinationID"": ""12"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][12,Type Changed,"{
+  ""DecisionID"": ""13"",
+  ""CombinationID"": ""13"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][13,Type Changed,"{
+  ""DecisionID"": ""14"",
+  ""CombinationID"": ""14"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][14,Type Changed,"{
+  ""DecisionID"": ""15"",
+  ""CombinationID"": ""15"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][15,Type Changed,"{
+  ""DecisionID"": ""16"",
+  ""CombinationID"": ""16"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][16,Type Changed,"{
+  ""DecisionID"": ""17"",
+  ""CombinationID"": ""17"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][17,Type Changed,"{
+  ""DecisionID"": ""18"",
+  ""CombinationID"": ""18"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
+Combinations -> Decision'][18,Type Changed,"{
+  ""DecisionID"": ""19"",
+  ""CombinationID"": ""19"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""030 - Account Opening – Company; 031 - General conditions"",
+  ""AnswerValueID"": ""63#64""
+}",
+Combinations -> Decision'][19,Type Changed,"{
+  ""DecisionID"": ""20"",
+  ""CombinationID"": ""20"",
+  ""Key"": ""RDA_DocumentDefinition"",
+  ""Question"": ""Document Definition"",
+  ""Answer"": ""013 - Copie de CIN; 014 - Certificat de résidence - (jusqu'à 3 mois à compter de la date d'émission); 015 - Photo; 029 - Account Opening – Person; 031 - General conditions"",
+  ""AnswerValueID"": ""15#16#17#62#64""
+}",
