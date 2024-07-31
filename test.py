@@ -95,3 +95,72 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
         writer.writerow(row)
 
 print(f"Differences exported to {csv_file_path}")
+
+
+
+# code works
+
+for element in nameListes:
+    data.append(loadSchemaInfo(element))
+# data.append(loadSchemaInfo('GL Accounts Schema'))
+for i in range(len(data)):
+    try:
+        xml_v3 = data[i][1][0]['CombinationXML']   
+    except Exception as e:
+        xml_v3 = copy_structure_only(data[i][2][0]['CombinationXML'])
+    try:
+        xml_v4 = data[i][2][0]['CombinationXML'] 
+    except Exception as e:
+        xml_v4 = copy_structure_only(data[i][1][0]['CombinationXML'])
+    xml_v3 = data[i][1][0]['CombinationXML'] 
+    
+    old_dict = xmltodict.parse(xml_v3)
+    new_dict = xmltodict.parse(xml_v4)
+    diff = DeepDiff(old_dict, new_dict)
+    print(DeepDiff(old_dict, new_dict))
+    diff_data = []
+    if 'values_changed' in diff:
+        for path, change in diff['values_changed'].items():
+            diff_data.append({
+                'Path': format_path(path),
+                'Change Type': 'Value Changed',
+                'Old Value': format_value(change.get('old_value', '')),
+                'New Value': format_value(change.get('new_value', ''))
+            })
+    if 'type_changes' in diff:
+        for path, change in diff['type_changes'].items():
+            diff_data.append({
+                'Path': format_path(path),
+                'Change Type': 'Type Changed',
+                'Old Value': format_value(change.get('old_value', '')),
+                'New Value': format_value(change.get('new_value', ''))
+            })
+    # csv_file_path = data[i][0]+'.csv'
+    # with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
+    #     writer = csv.DictWriter(file, fieldnames=['Path', 'Change Type', 'Old Value', 'New Value'])
+    #     writer.writeheader()
+    #     for row in diff_data:
+    #         writer.writerow(row)
+
+    # print(f"Differences exported to {csv_file_path}")
+    excel_file_path = f'differences{i}.xlsx'
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Différences"
+
+    # Écrire l'en-tête
+    ws.append(['Path', 'Change Type', 'Old Value', 'New Value'])
+
+    # Écrire les données
+    for row in diff_data:
+        ws.append([row['Path'], row['Change Type'], row['Old Value'], row['New Value']])
+
+    # Ajuster la largeur des colonnes
+    for column_cells in ws.columns:
+        length = max(len(str(cell.value)) for cell in column_cells)
+        ws.column_dimensions[column_cells[0].column_letter].width = length + 2
+
+    # Sauvegarder le fichier Excel
+    wb.save(excel_file_path)
+
+    print(f"Differences exported to {excel_file_path}")

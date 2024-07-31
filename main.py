@@ -8,6 +8,7 @@ from db.query import *
 from openpyxl import Workbook
 import xmltodict
 from deepdiff import DeepDiff
+import datetime
 db = SqlServerDB()
 querys = Query()
 
@@ -21,25 +22,24 @@ def getAllSchemaByName():
         db.connect()
         data = db.execute_query(querys.getSchemaName('bagsPAMF_CBS'))
         for i in range(len(data)-1):
-            allName.append(data[i].get('Name'))
+            date_value = data[i].get('ValidFrom')
+            allName.append((data[i].get('Name'), date_value.strftime('%Y-%m-%d %H:%M:%S')))
     except Exception as e:
         return
     finally:
         db.close()
     return set(allName)
 
-def loadSchemaInfo(name):
+def loadSchemaInfo(name, datefrom):
     try:
         db.connect()
-        data_v3 = db.execute_query(querys.getgetSchemaByName('bagsPAMF_CBS', name))
-        data_v4 = db.execute_query(querys.getgetSchemaByName('bagsPAMF4', name))
+        data_v3 = db.execute_query(querys.getgetSchemaByName('bagsPAMF_CBS', name, datefrom))
+        data_v4 = db.execute_query(querys.getgetSchemaByName('bagsPAMF4', name, datefrom))
         return (name, data_v3,data_v4)
     except Exception as e:
         return
     finally:
         db.close()
-
-
 
 def parse_xml(xml_string):
     return xmltodict.parse(xml_string)
@@ -97,7 +97,7 @@ def format_path(path):
     """
     Format the path for better readability
     """
-    path = path.replace("root", "").strip("['']").replace("']['", " -> ")
+    path = path.replace("root", "").strip("['']").replace("']['", " -> ").replace("'][", '->')
     return path
 
 def format_value(value):
@@ -112,9 +112,14 @@ def format_value(value):
 
 nameListes = getAllSchemaByName()
 data = []
-# print(nameListes)
+print(nameListes)
+
+
 for element in nameListes:
-    data.append(loadSchemaInfo(element))
+    data.append(loadSchemaInfo(element[0], element[1]))
+
+for element in nameListes:
+    data.append(loadSchemaInfo(element[0], element[1]))
 # data.append(loadSchemaInfo('GL Accounts Schema'))
 for i in range(len(data)):
     try:
@@ -148,14 +153,7 @@ for i in range(len(data)):
                 'Old Value': format_value(change.get('old_value', '')),
                 'New Value': format_value(change.get('new_value', ''))
             })
-    # csv_file_path = data[i][0]+'.csv'
-    # with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
-    #     writer = csv.DictWriter(file, fieldnames=['Path', 'Change Type', 'Old Value', 'New Value'])
-    #     writer.writeheader()
-    #     for row in diff_data:
-    #         writer.writerow(row)
 
-    # print(f"Differences exported to {csv_file_path}")
     excel_file_path = f'differences{i}.xlsx'
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -177,5 +175,3 @@ for i in range(len(data)):
     wb.save(excel_file_path)
 
     print(f"Differences exported to {excel_file_path}")
-
-   

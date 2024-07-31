@@ -10,6 +10,7 @@ class Query:
             ,[Status]
             ,[Key]
             ,[ValidTo]
+            ,scc.ValidFrom
             ,scp.rSchemaParameterID
             ,sccb.*
         FROM [{dbname}].[dbo].[rSchema] sc
@@ -23,7 +24,8 @@ class Query:
         '''
         return q
     
-    def getgetSchemaByName(self, dbname, name):
+    def getgetSchemaByName(self, dbname, name, validfrom):
+        validfrom = validfrom.strip(" '")
         q = f'''
         SELECT  sc.rSchemaID
             ,[Code]
@@ -31,6 +33,7 @@ class Query:
             ,[Status]
             ,[Key]
             ,[ValidTo]
+            ,scc.ValidFrom
             ,scp.rSchemaParameterID
             ,sccb.*
         FROM [{dbname}].[dbo].[rSchema] sc
@@ -42,5 +45,6 @@ class Query:
         where sc.Status=1
         and scc.validto is null
         and sc.Name='{name}'
+        and CAST(scc.ValidFrom AS datetime) = '{validfrom}'
         '''
         return q
