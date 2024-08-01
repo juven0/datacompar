@@ -1,6 +1,7 @@
 import csv
 import json
 
+from dotenv import load_dotenv
 import openpyxl
 from tabulate import tabulate 
 from db.dbconn import SqlServerDB
@@ -8,38 +9,42 @@ from db.query import *
 from openpyxl import Workbook
 import xmltodict
 from deepdiff import DeepDiff
+import os
 import datetime
-db = SqlServerDB()
+
+load_dotenv()
+db24 = SqlServerDB(os.getenv('SQL_SERVER_DB_24_SERVER'),os.getenv('SQL_SERVER_DB_24_DATABASE'),os.getenv('SQL_SERVER_DB_24_USERNAME'),os.getenv('SQL_SERVER_DB_24_PASSWORD'))
+db44 = SqlServerDB(os.getenv('SQL_SERVER_DB_44_SERVER'),os.getenv('SQL_SERVER_DB_44_DATABASE'),os.getenv('SQL_SERVER_DB_44_USERNAME'),os.getenv('SQL_SERVER_DB_44_PASSWORD'))
 querys = Query()
-
-
-
 
 
 def getAllSchemaByName():
     try:
+        print(querys.simData())
         allName = []
-        db.connect()
-        data = db.execute_query(querys.getSchemaName('bagsPAMF_CBS'))
+        db44.connect()
+        data = db44.execute_query(querys.simData())
         for i in range(len(data)-1):
             date_value = data[i].get('ValidFrom')
-            allName.append((data[i].get('Name'), date_value.strftime('%Y-%m-%d %H:%M:%S')))
+            allName.append((data[i].get('name'), date_value.strftime('%Y-%m-%d %H:%M:%S')))
     except Exception as e:
         return
     finally:
-        db.close()
+        db44.close()
     return set(allName)
 
 def loadSchemaInfo(name, datefrom):
     try:
-        db.connect()
-        data_v3 = db.execute_query(querys.getgetSchemaByName('bagsPAMF_CBS', name, datefrom))
-        data_v4 = db.execute_query(querys.getgetSchemaByName('bagsPAMF4', name, datefrom))
+        db24.connect()
+        db44.connect()
+        data_v3 = db24.execute_query(querys.getgetSchemaByName('bagsPAMF_CBS', name, datefrom))
+        data_v4 = db44.execute_query(querys.getgetSchemaByName('bagsPAMF4', name, datefrom))
         return (name, data_v3,data_v4)
     except Exception as e:
         return
     finally:
-        db.close()
+        db24.close()
+        db44.close()
 
 def parse_xml(xml_string):
     return xmltodict.parse(xml_string)
@@ -97,7 +102,7 @@ def format_path(path):
     """
     Format the path for better readability
     """
-    path = path.replace("root", "").strip("['']").replace("']['", " -> ").replace("'][", '->')
+    path = path.replace("root", "").strip("['']").replace("']['", " -> ").replace("]['", '->').replace("'][", '->')
     return path
 
 def format_value(value):
@@ -111,16 +116,15 @@ def format_value(value):
     return str(value)
 
 nameListes = getAllSchemaByName()
-data = []
 print(nameListes)
+data = []
 
+for element in nameListes:
+    data.append(loadSchemaInfo(element[0], element[1]))
 
 for element in nameListes:
     data.append(loadSchemaInfo(element[0], element[1]))
 
-for element in nameListes:
-    data.append(loadSchemaInfo(element[0], element[1]))
-# data.append(loadSchemaInfo('GL Accounts Schema'))
 for i in range(len(data)):
     try:
         xml_v3 = data[i][1][0]['CombinationXML']   
@@ -130,12 +134,10 @@ for i in range(len(data)):
         xml_v4 = data[i][2][0]['CombinationXML'] 
     except Exception as e:
         xml_v4 = copy_structure_only(data[i][1][0]['CombinationXML'])
-    xml_v3 = data[i][1][0]['CombinationXML'] 
     
     old_dict = xmltodict.parse(xml_v3)
     new_dict = xmltodict.parse(xml_v4)
     diff = DeepDiff(old_dict, new_dict)
-    print(DeepDiff(old_dict, new_dict))
     diff_data = []
     if 'values_changed' in diff:
         for path, change in diff['values_changed'].items():
@@ -154,19 +156,17 @@ for i in range(len(data)):
                 'New Value': format_value(change.get('new_value', ''))
             })
 
-    excel_file_path = f'differences{i}.xlsx'
+    excel_file_path = f'out/differences{i}.xlsx'
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Différences"
 
-    # Écrire l'en-tête
     ws.append(['Path', 'Change Type', 'Old Value', 'New Value'])
 
-    # Écrire les données
+    
     for row in diff_data:
         ws.append([row['Path'], row['Change Type'], row['Old Value'], row['New Value']])
 
-    # Ajuster la largeur des colonnes
     for column_cells in ws.columns:
         length = max(len(str(cell.value)) for cell in column_cells)
         ws.column_dimensions[column_cells[0].column_letter].width = length + 2

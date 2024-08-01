@@ -1,14 +1,12 @@
 import pyodbc
 import os 
-from dotenv import load_dotenv
 
 class SqlServerDB:
-    def __init__(self):
-        load_dotenv()
-        self.server = os.getenv('SQL_SERVER_DB_SERVER')
-        self.database = os.getenv('SQL_SERVER_DB_DATABASE')
-        self.username = os.getenv('SQL_SERVER_DB_USERNAME')
-        self.password = os.getenv('SQL_SERVER_DB_PASSWORD')
+    def __init__(self, server, database, username, password):
+        self.server = server
+        self.database = database
+        self.username = username
+        self.password = password
         self.conn = None
 
     def connect(self):
