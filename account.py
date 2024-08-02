@@ -27,6 +27,7 @@ def getAccountCode():
 
 accountCode = getAccountCode()
 db.connect()
+wb = openpyxl.Workbook()
 for i in range(len(accountCode)):
     
     old_dict = db.execute_query(querys.account('bagsPAMF_CBS',accountCode[i]))
@@ -52,10 +53,13 @@ for i in range(len(accountCode)):
                 'New Value': change.get('new_value', '')
                 })
 
-    excel_file_path = f'out/ACT{i}.xlsx'
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws.title = "Différences"
+
+    sanitized_account_code = "".join([c if c.isalnum() or c == '_' else "_" for c in accountCode[i]])
+    ws = wb.create_sheet(title=sanitized_account_code)
+    
+    # 
+    # ws = wb.active
+    # ws.title = "Différences"
 
     ws.append(['Path', 'Change Type', 'Old Value', 'New Value'])
 
@@ -67,9 +71,18 @@ for i in range(len(accountCode)):
         length = max(len(str(cell.value)) for cell in column_cells)
         ws.column_dimensions[column_cells[0].column_letter].width = length + 2
 
-    
-    wb.save(excel_file_path)
+if 'Sheet' in wb.sheetnames:
+    default_sheet = wb['Sheet']
+    if default_sheet.max_row == 1 and default_sheet.max_column == 1:
+        wb.remove(default_sheet)
 
-    print(f"Differences exported to {excel_file_path}")
+
+output_dir = 'out'
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+excel_file_path = f'{output_dir}/account.xlsx'   
+wb.save(excel_file_path)
+
+print(f"Differences exported to {excel_file_path}")
 
 db.close()

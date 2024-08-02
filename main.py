@@ -156,7 +156,12 @@ for i in range(len(data)):
                 'New Value': format_value(change.get('new_value', ''))
             })
 
-    excel_file_path = f'out/differences{i}.xlsx'
+    output_dir = 'schema'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    sanitized_account_code = "".join([c if c.isalnum() or c == '_' else "_" for c in data[i][0]])
+    excel_file_path = f'{output_dir}/{sanitized_account_code}.xlsx'
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Différences"
